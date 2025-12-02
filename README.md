@@ -44,7 +44,7 @@
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/sales-dashboard.git
+git clone https://github.com/julian-21/project.git
 cd sales-dashboard
 ```
 
@@ -64,7 +64,7 @@ php artisan key:generate
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=sales_dashboard
+DB_DATABASE=project_fikri
 DB_USERNAME=root
 DB_PASSWORD=your_password
 ```
@@ -93,20 +93,9 @@ http://localhost:8000
 DB_CONNECTION=mysql
 DB_HOST=your-host
 DB_PORT=3306
-DB_DATABASE=sales_dashboard
+DB_DATABASE=project_fikri
 DB_USERNAME=your-user
 DB_PASSWORD=your-password
-```
-
-#### SQLite (Good for Development)
-```env
-DB_CONNECTION=sqlite
-DB_DATABASE=/absolute/path/to/database.sqlite
-```
-
-Create SQLite database:
-```bash
-touch database/database.sqlite
 ```
 
 ## 📦 Project Structure
