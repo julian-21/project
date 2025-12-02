@@ -1,0 +1,51 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "nixpacksPlan": {
+      "phases": {
+        "setup": {
+          "nixPkgs": ["php82", "php82Extensions.pdo", "php82Extensions.pdo_mysql", "composer"]
+        },
+        "install": {
+          "cmds": [
+            "composer install --no-dev --optimize-autoloader"
+          ]
+        },
+        "preDeploy": {
+          "cmds": [
+            "php artisan migrate --force",
+            "php artisan storage:link"
+          ]
+        },
+        "start": {
+          "cmd": "php artisan serve --host=0.0.0.0 --port=$PORT"
+        }
+      }
+    }
+  },
+  "services": {
+    "app": {
+      "start": "php artisan serve --host=0.0.0.0 --port=$PORT",
+      "env": {
+        "APP_ENV": "production",
+        "APP_DEBUG": "false",
+        "APP_URL": "https://your-domain.railway.app",
+        "DB_CONNECTION": "mysql",
+        "DB_HOST": "${{ MYSQL.HOST }}",
+        "DB_PORT": "${{ MYSQL.PORT }}",
+        "DB_DATABASE": "${{ MYSQL.DATABASE }}",
+        "DB_USERNAME": "${{ MYSQL.USER }}",
+        "DB_PASSWORD": "${{ MYSQL.PASSWORD }}"
+      }
+    },
+    "mysql": {
+      "plugin": "mysql",
+      "env": {
+        "MYSQL_DATABASE": "railway",
+        "MYSQL_USER": "railway",
+        "MYSQL_PASSWORD": "password"
+      }
+    }
+  }
+}
