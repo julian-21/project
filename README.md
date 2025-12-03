@@ -45,7 +45,7 @@
 1. **Clone the repository**
 ```bash
 git clone https://github.com/julian-21/project.git
-cd sales-dashboard
+cd project_fikri
 ```
 
 2. **Install dependencies**
